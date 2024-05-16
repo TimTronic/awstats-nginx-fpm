@@ -7,7 +7,7 @@ RUN --mount=target=/var/lib/apt/lists,type=cache,sharing=locked \
     --mount=target=/var/cache/apt,type=cache,sharing=locked \
     DEBIAN_FRONTEND=noninteractive \
     apt-get update && apt-get dist-upgrade -y && \
-    apt-get install cron libgeo-ip-perl libgeo-ipfree-perl php-fpm lockfile-progs -y
+    apt-get install cron libgeo-ip-perl libgeo-ipfree-perl php-fpm -y
 
 # 7.9 appears to be much faster at dynamic stuff
 ADD --checksum=sha256:615178ed313d34315f15a522db1a5d12ca9c395e3785bb06280abff95d9a0546 https://cytranet.dl.sourceforge.net/project/awstats/AWStats/7.9/awstats-7.9.tar.gz?viasf=1 /
