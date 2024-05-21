@@ -21,8 +21,12 @@ COPY php-fpm.conf /etc/php/8.2/fpm/pool.d/www.conf
 
 # setup cron
 COPY crontab /etc/cron.d/awstats
-# copy in our cron, remove debian default cron for awstats
-RUN chmod 0644 /etc/cron.d/awstats && touch /var/log/cron.log && crontab /etc/cron.d/awstats
+
+# more configuration, including nginx, cron, and permissions
+RUN sed -i 's/worker_processes\s\+auto;/worker_processes 1;/' /etc/nginx/nginx.conf && \
+    chmod 0644 /etc/cron.d/awstats && \
+    touch /var/log/cron.log && \
+    crontab /etc/cron.d/awstats
 
 # start the cron service
 #CMD cron && tail -f /var/log/cron.log
