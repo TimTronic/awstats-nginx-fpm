@@ -1,7 +1,7 @@
 FROM nginx:1
 
-RUN echo "deb http://deb.debian.org/debian bookworm contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb http://security.debian.org/debian-security bookworm-security contrib non-free" >> /etc/apt/sources.list
+RUN echo "deb http://deb.debian.org/debian trixie contrib non-free" >> /etc/apt/sources.list && \
+    echo "deb http://security.debian.org/debian-security trixie-security contrib non-free" >> /etc/apt/sources.list
 
 RUN --mount=target=/var/lib/apt/lists,type=cache,sharing=locked \
     --mount=target=/var/cache/apt,type=cache,sharing=locked \
@@ -17,7 +17,7 @@ RUN tar xvf awstats-7.9.tar.gz && mv awstats-7.9 awstats && rm awstats-7.9.tar.g
 #RUN tar xvf awstats-7.8.tar.gz && mv awstats-7.8 awstats && rm awstats-7.8.tar.gz
 
 # setup php fpm fastcgi
-COPY php-fpm.conf /etc/php/8.2/fpm/pool.d/www.conf
+COPY php-fpm.conf /etc/php/8.4/fpm/pool.d/www.conf
 
 # setup cron
 COPY crontab /etc/cron.d/awstats

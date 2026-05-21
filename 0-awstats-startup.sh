@@ -9,4 +9,4 @@ fi
 /usr/sbin/cron && tail -f /var/log/cron.log &
 
 # fastcgi for nginx instance
-/usr/sbin/php-fpm8.2 &
+/usr/sbin/php-fpm8.4 &
