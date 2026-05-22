@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         TARGET_REPO = 'https://docker-registry.deadlyninja.com'
-        TARGET_REPO_CREDENTIALS = 'docker-registry-creds'
+        TARGET_REPO_CREDENTIALS = 'DeadlyNinja'
         DOCKER_IMAGE_NAME = 'deadlyninja/awstats-nginx-fpm'
         DOCKERFILE_PATH = './Dockerfile'
     }
