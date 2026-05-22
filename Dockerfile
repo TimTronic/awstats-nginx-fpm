@@ -3,8 +3,8 @@ FROM nginx:1
 RUN echo "deb http://deb.debian.org/debian trixie contrib non-free" >> /etc/apt/sources.list && \
     echo "deb http://security.debian.org/debian-security trixie-security contrib non-free" >> /etc/apt/sources.list
 
-RUN --mount=target=/var/lib/apt/lists,type=cache,sharing=locked \
-    --mount=target=/var/cache/apt,type=cache,sharing=locked \
+RUN --mount=target=/var/lib/apt/lists,type=cache,sharing=private \
+    --mount=target=/var/cache/apt,type=cache,sharing=private \
     DEBIAN_FRONTEND=noninteractive \
     apt-get update && apt-get dist-upgrade -y && \
     apt-get install cron libgeo-ip-perl libgeo-ipfree-perl php-fpm -y
